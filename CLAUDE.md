@@ -4,9 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## State of the repo
 
-This repo is currently **empty of application code** — it contains only a `docs/` folder with three handoff bundles. There is no `package.json`, no `src/`, no build/lint/test tooling yet. The first real task here is almost always to **scaffold the app** per the specs below; there are no existing commands to run.
+The app has been scaffolded per `ARCHITECTURE.md` (Vite + React 18 + TS strict + Vitest/RTL). Implemented so far: shared infra (config, design tokens, `shared/ui`, `shared/money`), the `AppShell`/router/QueryClient wiring, and the **Menu** module as a complete vertical slice (domain → in-memory repo → TanStack Query hooks → UI), running against in-memory mock repositories. The other six modules (Inventory, Recipes, Billing, Guests, PublicMenu, Analytics) are routed to a shared `ComingSoonPage` placeholder pending their turn in the documented build order.
 
-Once scaffolded (per `ARCHITECTURE.md`'s suggested stack — Vite + React 18 + TS strict + Vitest), add the standard `npm run dev` / `build` / `lint` / `test` scripts and document the actual commands here so future sessions don't have to rediscover them.
+**Commands:**
+- `npm run dev` — start the Vite dev server (http://localhost:5173)
+- `npm run build` — type-check (`tsc -b`) and produce a production build
+- `npm run lint` — run ESLint
+- `npm run test` — run the Vitest suite once
+- `npm run test:watch` — run Vitest in watch mode
+
+**Env:** copy `.env.example` to `.env` (gitignored). Key vars: `VITE_API_BASE_URL`, `VITE_DEFAULT_RESTAURANT_ID`, `VITE_USE_MOCK_REPOS`, `VITE_DEFAULT_VAT_PCT`, `VITE_DEFAULT_SERVICE_PCT`. They're read exactly once in `src/shared/config/env.ts`, which exports a frozen typed `config` object — import that everywhere instead of touching `import.meta.env` directly.
 
 ## What this project is
 
