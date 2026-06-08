@@ -53,9 +53,39 @@
   no mapper layer was added since `types.ts` shapes line up 1:1 with our domain
   types; if the live API differs, map in the `*.http.ts` files, not domain code.
 
+## Recipes module (just landed)
+
+- `modules/recipes` — vertical slice: `RecipeRepository` port (`get`/`upsertLine`/
+  `removeLine` against `/foods/:id/recipe`), memory + http infra, `useRecipe`/
+  `useUpsertRecipeLine`/`useRemoveRecipeLine` hooks, and two pages —
+  `RecipesPage` (pick a dish) and `FoodEditorPage` (cost summary + recipe table
+  + add-ingredient row, all driven by the live `FoodDetail`).
+- `domain/cost.ts` — pure, unit-tested functions: `lineCost`, `foodCost`,
+  `margin`, `percentageOfCost`, `projectedUsage` (10 tests in `cost.test.ts`).
+  These mirror what the backend computes server-side on every read; the UI
+  never does this math inline.
+- Routed at `/recipes` and `/recipes/:foodId`; nav entry flipped to `live`.
+- **Barrel additions**: exported `useFoods` from `modules/menu` and
+  `useIngredients` from `modules/inventory` — Recipes needs both lists
+  (food picker, ingredient picker) and barrel-only cross-module imports mean
+  the hook has to be part of the public surface, not deep-imported.
+- The in-memory `recipeRepository.memory.ts` keeps small seeded "food shells"
+  + recipe-line snapshots (ingredient name/cost) in sync with the Menu/
+  Inventory mocks by hand — see the comment at the top of that file for why
+  (avoids instantiating another module's repository inside this module's infra).
+
+## Questions for the backend team / next agent
+
+- Confirm `PUT /foods/:id/recipe` upserts by `ingredientId` (create-or-replace,
+  `ON CONFLICT`) and that the response is the *full* refreshed `FoodDetail`
+  (we assume this — no separate "line updated" shape).
+- Is there a real `PATCH` for partial updates anywhere, or is `PUT` always
+  full-resource replace?
+- Any rate limiting / retry-after conventions we should respect in `apiClient`?
+
 ## Build order — what's next
 
-Per `ARCHITECTURE.md`: **Recipes** is next (two-panel food editor, recipe
-table, cost/margin/usage as pure tested functions in `recipes/domain/cost.ts` —
-consumes the `Ingredient.unitCost` values Inventory now exposes). Follow the
-same vertical-slice shape as `modules/menu` / `modules/inventory`.
+Per `ARCHITECTURE.md`: **Billing** is next (POS builder, receipt preview,
+A4 invoice, `settleFactorUseCase` → inventory depletion orchestration — pure
+totals math goes in `billing/domain/totals.ts`, mirroring `recipes/domain/cost.ts`).
+Follow the same vertical-slice shape as the existing modules.
