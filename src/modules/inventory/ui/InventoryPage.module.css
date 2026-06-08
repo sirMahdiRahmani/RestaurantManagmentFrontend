@@ -1,0 +1,88 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-comfy);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.skeletonStack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.qtyCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.adjustButtons {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.adjustButton {
+  inline-size: 28px;
+  block-size: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.adjustButton:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+
+.adjustButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.levelBar {
+  position: relative;
+  inline-size: 96px;
+  block-size: 6px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.levelFill {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block: 0;
+}

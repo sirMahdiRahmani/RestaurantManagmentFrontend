@@ -1,0 +1,43 @@
+.percentBar {
+  position: relative;
+  inline-size: 72px;
+  block-size: 6px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.percentFill {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block: 0;
+  background: var(--accent);
+}
+
+.percentCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.removeButton {
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--danger);
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.removeButton:hover:not(:disabled) {
+  background: var(--danger-bg);
+}
+
+.removeButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
