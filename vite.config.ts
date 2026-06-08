@@ -9,5 +9,8 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['src/test/setup.ts'],
+    // Tests always run against in-memory repos, regardless of the developer's
+    // local .env (which may point at a real backend for manual dev/testing).
+    env: { VITE_USE_MOCK_REPOS: 'true' },
   },
 })

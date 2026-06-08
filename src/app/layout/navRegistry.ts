@@ -11,7 +11,7 @@ export interface NavEntry {
 export const navRegistry: NavEntry[] = [
   { to: '/menu', label: 'Menu', icon: 'dish', status: 'live' },
   { to: '/menu/categories', label: 'Categories', icon: 'layers', status: 'live' },
-  { to: '/inventory', label: 'Inventory', icon: 'box', status: 'planned' },
+  { to: '/inventory', label: 'Inventory', icon: 'box', status: 'live' },
   { to: '/recipes', label: 'Recipes', icon: 'grid', status: 'planned' },
   { to: '/billing', label: 'Billing', icon: 'receipt', status: 'planned' },
   { to: '/guests', label: 'Guests', icon: 'user', status: 'planned' },

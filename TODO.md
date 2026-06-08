@@ -26,15 +26,36 @@
       that becomes an auth/session concern, not a `config` concern — flag this
       before building Inventory if login/tenant-switching is in scope.
 
+## Inventory module (just landed)
+
+- `modules/inventory` — full vertical slice mirroring `modules/menu`:
+  `IngredientRepository` / `StockInRepository` ports, memory + http infra,
+  TanStack Query hooks, and two pages — `InventoryPage` (stock table with
+  ±1 quick-adjust, low-stock pill, search) and `StockInPage` (dynamic line
+  items, live grand-total preview, posts a `CreateStockInInput`).
+- Routed at `/inventory` and `/inventory/stock-in`; nav entry flipped to `live`.
+- The in-memory `stockInRepository.memory.ts` deliberately does **not**
+  recompute ingredient on-hand qty / weighted-average cost on receive — that
+  math is server-owned (see comment in the file). Don't replicate it client-side.
+- `vite.config.ts` now pins `VITE_USE_MOCK_REPOS=true` for the test environment
+  specifically, so `npm run test` / `make check` stay green regardless of
+  whatever `.env` points at locally (e.g. a live backend for manual testing).
+
 ## Questions for the backend team / next agent
 
 - Is there a real `PATCH` for partial updates anywhere, or is `PUT` always
   full-resource replace? (Affects whether `rename`-style helpers need a
-  read-before-write round trip.)
+  read-before-write round trip — same question now applies to
+  `UpdateIngredientRequest` if/when an ingredient-edit UI is built.)
 - Any rate limiting / retry-after conventions we should respect in `apiClient`?
+- Confirm `POST /ingredients/:id/adjust` and `POST /stock-ins` response shapes
+  match `Ingredient` / `StockIn` exactly once a live backend is reachable —
+  no mapper layer was added since `types.ts` shapes line up 1:1 with our domain
+  types; if the live API differs, map in the `*.http.ts` files, not domain code.
 
 ## Build order — what's next
 
-Per `ARCHITECTURE.md`: **Inventory** is next (stock table, stock-in form,
-low-stock rules, weighted-average unit cost — this is what `Recipes` will
-later consume). Follow the same vertical-slice shape as `modules/menu`.
+Per `ARCHITECTURE.md`: **Recipes** is next (two-panel food editor, recipe
+table, cost/margin/usage as pure tested functions in `recipes/domain/cost.ts` —
+consumes the `Ingredient.unitCost` values Inventory now exposes). Follow the
+same vertical-slice shape as `modules/menu` / `modules/inventory`.

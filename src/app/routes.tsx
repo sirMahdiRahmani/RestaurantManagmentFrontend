@@ -1,11 +1,12 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { CategoriesPage, MenuPage } from '../modules/menu'
+import { InventoryPage, StockInPage } from '../modules/inventory'
 import { ComingSoonPage } from '../shared/ui'
 
 /**
- * Inventory/Recipes/Billing/Guests/PublicMenu/Analytics render a shared
- * placeholder until their turn in the documented build order (steps 3-8).
- * This is intentional, not missed scaffolding.
+ * Recipes/Billing/Guests/PublicMenu/Analytics render a shared placeholder
+ * until their turn in the documented build order (steps 4-8). This is
+ * intentional, not missed scaffolding.
  */
 export function AppRoutes() {
   return (
@@ -13,7 +14,8 @@ export function AppRoutes() {
       <Route path="/" element={<Navigate to="/menu" replace />} />
       <Route path="/menu" element={<MenuPage />} />
       <Route path="/menu/categories" element={<CategoriesPage />} />
-      <Route path="/inventory" element={<ComingSoonPage title="Inventory" />} />
+      <Route path="/inventory" element={<InventoryPage />} />
+      <Route path="/inventory/stock-in" element={<StockInPage />} />
       <Route path="/recipes" element={<ComingSoonPage title="Recipes" />} />
       <Route path="/billing" element={<ComingSoonPage title="Billing" />} />
       <Route path="/guests" element={<ComingSoonPage title="Guests" />} />
