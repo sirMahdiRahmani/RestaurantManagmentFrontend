@@ -1,0 +1,90 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  min-block-size: 100dvh;
+  background: var(--page);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-compact);
+  max-inline-size: 390px;
+  inline-size: 100%;
+}
+
+.brandHeader {
+  text-align: center;
+  padding-block: 8px;
+}
+
+.brandName {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.brandTagline {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.consentLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.consentCheck {
+  flex-shrink: 0;
+  margin-block-start: 2px;
+  cursor: pointer;
+}
+
+.fieldError {
+  margin: 0;
+  font-size: 12px;
+  color: var(--danger);
+}
+
+/* --- Success state --- */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.successIcon {
+  inline-size: 56px;
+  block-size: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ok-bg);
+  color: var(--ok);
+  border-radius: 999px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.successTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.successText {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}

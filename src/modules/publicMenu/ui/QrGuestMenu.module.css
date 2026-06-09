@@ -1,0 +1,122 @@
+.page {
+  max-inline-size: 390px;
+  margin: 0 auto;
+  min-block-size: 100dvh;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  background: var(--accent);
+  color: #fff;
+  padding: 32px 20px 24px;
+  text-align: center;
+}
+
+.restaurantName {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.tagline {
+  margin: 4px 0 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.skeletonStack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+.categoryPills {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 16px;
+  scrollbar-width: none;
+}
+
+.categoryPills::-webkit-scrollbar {
+  display: none;
+}
+
+.catPill {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.catPillActive {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.itemList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  gap: 0;
+}
+
+.itemRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-block-end: 1px solid var(--line-2);
+}
+
+.itemRow:last-child {
+  border-block-end: none;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.itemName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.itemDesc {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.itemPrice {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.footer {
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--faint);
+  border-block-start: 1px solid var(--line-2);
+}

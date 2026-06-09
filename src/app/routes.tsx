@@ -2,28 +2,29 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { CategoriesPage, MenuPage } from '../modules/menu'
 import { InventoryPage, StockInPage } from '../modules/inventory'
 import { FoodEditorPage, RecipesPage } from '../modules/recipes'
-import { ComingSoonPage } from '../shared/ui'
+import { PosBuilderPage } from '../modules/billing'
+import { GuestsCrmPage, OnboardingForm } from '../modules/guests'
+import { PublicMenuPage, MenuBoard, QrGuestMenu } from '../modules/publicMenu'
+import { DashboardPage } from '../modules/analytics'
 
-/**
- * Billing/Guests/PublicMenu/Analytics render a shared placeholder until their
- * turn in the documented build order (steps 5-8). This is intentional, not
- * missed scaffolding.
- */
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/menu" replace />} />
+      <Route path="/" element={<Navigate to="/analytics" replace />} />
+      <Route path="/analytics" element={<DashboardPage />} />
       <Route path="/menu" element={<MenuPage />} />
       <Route path="/menu/categories" element={<CategoriesPage />} />
       <Route path="/inventory" element={<InventoryPage />} />
       <Route path="/inventory/stock-in" element={<StockInPage />} />
       <Route path="/recipes" element={<RecipesPage />} />
       <Route path="/recipes/:foodId" element={<FoodEditorPage />} />
-      <Route path="/billing" element={<ComingSoonPage title="Billing" />} />
-      <Route path="/guests" element={<ComingSoonPage title="Guests" />} />
-      <Route path="/public-menu" element={<ComingSoonPage title="Public Menu" />} />
-      <Route path="/analytics" element={<ComingSoonPage title="Analytics" />} />
-      <Route path="*" element={<Navigate to="/menu" replace />} />
+      <Route path="/billing" element={<PosBuilderPage />} />
+      <Route path="/guests" element={<GuestsCrmPage />} />
+      <Route path="/guests/new" element={<OnboardingForm />} />
+      <Route path="/public-menu" element={<PublicMenuPage />} />
+      <Route path="/public-menu/board" element={<MenuBoard />} />
+      <Route path="/public-menu/qr" element={<QrGuestMenu />} />
+      <Route path="*" element={<Navigate to="/analytics" replace />} />
     </Routes>
   )
 }
