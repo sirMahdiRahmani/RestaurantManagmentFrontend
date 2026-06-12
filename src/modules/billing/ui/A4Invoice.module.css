@@ -1,0 +1,100 @@
+.page {
+  background: #fff;
+  padding: 40px;
+  max-inline-size: 210mm;
+  margin: 0 auto;
+  font-size: 13px;
+  color: #000;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-block-end: 24px;
+  padding-block-end: 16px;
+  border-block-end: 2px solid #000;
+}
+
+.restaurantName {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.invoiceMeta {
+  text-align: end;
+}
+
+.invoiceMeta p {
+  margin: 2px 0;
+}
+
+.table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  margin-block-end: 20px;
+}
+
+.table th,
+.table td {
+  padding: 8px 12px;
+  border-block-end: 1px solid #e0e0e0;
+  text-align: start;
+}
+
+.table th {
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.right {
+  text-align: end !important;
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-inline-size: 280px;
+  margin-inline-start: auto;
+  padding-block-start: 12px;
+  border-block-start: 1px solid #ccc;
+}
+
+.totalsRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+.totalsFinal {
+  font-weight: 700;
+  font-size: 15px;
+  padding-block-start: 8px;
+  border-block-start: 2px solid #000;
+  margin-block-start: 4px;
+}
+
+.footer {
+  margin-block-start: 40px;
+  padding-block-start: 16px;
+  border-block-start: 1px solid #ccc;
+  text-align: center;
+}
+
+.signatureLine {
+  margin-block-start: 40px;
+  color: #666;
+}
+
+@media print {
+  .page {
+    padding: 20mm;
+    max-inline-size: 100%;
+    box-shadow: none;
+  }
+}

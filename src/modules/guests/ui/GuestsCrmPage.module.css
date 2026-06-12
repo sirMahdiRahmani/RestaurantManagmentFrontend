@@ -1,0 +1,138 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-comfy);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* --- Add form --- */
+.addForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-compact);
+}
+
+.formTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.formFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-compact);
+}
+
+@media (max-width: 600px) {
+  .formFields {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formError {
+  margin: 0;
+  font-size: 13px;
+  color: var(--danger);
+}
+
+.formActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* --- KPI row --- */
+.kpiRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-compact);
+}
+
+@media (max-width: 600px) {
+  .kpiRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.kpiCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.kpiLabel {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.kpiValue {
+  font-size: 24px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Filters --- */
+.filters {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-compact);
+  flex-wrap: wrap;
+}
+
+.tierPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-block-end: 4px;
+}
+
+.tierPill {
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.tierPill:hover {
+  background: var(--surface-2);
+}
+
+.tierPillActive {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.skeletonStack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
