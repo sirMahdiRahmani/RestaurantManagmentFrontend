@@ -10,6 +10,9 @@ export type IconName =
   | 'monitor'
   | 'search'
   | 'plus'
+  | 'print'
+  | 'minus'
+  | 'trash'
 
 export interface IconProps extends SVGAttributes<SVGSVGElement> {
   name: IconName
@@ -26,6 +29,9 @@ const paths: Record<IconName, string> = {
   monitor: 'M4 5h16v11H4zM9 20h6M12 16v4',
   search: 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3',
   plus: 'M12 5v14M5 12h14',
+  print: 'M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-2M6 14h12v7H6z',
+  minus: 'M5 12h14',
+  trash: 'M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13',
 }
 
 export function Icon({ name, size = 18, ...rest }: IconProps) {

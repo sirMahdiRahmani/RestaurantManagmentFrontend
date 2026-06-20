@@ -1,4 +1,6 @@
 export { MenuPage } from './ui/MenuPage'
 export { CategoriesPage } from './ui/CategoriesPage'
 export { useFoods } from './application/useFoods'
+export { useCategories } from './application/useCategories'
+export { foodRepository, categoryRepository } from './application/repositories'
 export type { Category, Food } from './domain/types'

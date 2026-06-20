@@ -1,0 +1,104 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-comfy);
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.invoice {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 48px;
+  width: 210mm;
+  max-width: 100%;
+  min-height: 297mm;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.invoiceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-block-end: 2px solid var(--ink);
+  padding-block-end: 16px;
+}
+
+.brand {
+  margin: 0;
+  font-size: 24px;
+}
+
+.brandMeta {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.invoiceMeta {
+  text-align: end;
+  font-size: 13px;
+}
+.invoiceMeta p {
+  margin: 0 0 4px;
+}
+
+.totals {
+  margin: 0 0 0 auto;
+  width: min(280px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.totalRow dd {
+  margin: 0;
+}
+
+.totalRowGrand {
+  font-size: 16px;
+  font-weight: 700;
+  border-block-start: 1px solid var(--line);
+  padding-block-start: 6px;
+}
+
+.signature {
+  margin-block-start: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(220px, 100%);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.signatureLine {
+  border-block-end: 1px solid var(--ink);
+  height: 36px;
+}
+
+@media print {
+  .actions {
+    display: none;
+  }
+  .invoice {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
+}
